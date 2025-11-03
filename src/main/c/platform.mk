@@ -21,7 +21,7 @@ mkdir = mkdir $(subst /,\,$(1))
 # (unlike `rm -R`).
 rmdir_r = -rmdir /s /q $(subst /,\,$(1))
 else
-gradlew-build = ./gradlew build
+gradlew-build = ./gradlew build --build-cache --no-daemon --no-parallel
 mkdir = mkdir -p $(1)
 # Named rmdir_r – not rm_r – to indicate that it should only be used to operate
 # on directories due to limitations of the Windows variant of the command.
