@@ -181,9 +181,9 @@ arm32v8:
 	$(MAKE) -f natives.mk
 
 # Requires gcc-arm-linux-gnueabihf.
-arm32v8HF: export CC := arm-linux-gnueabihf-gcc
-arm32v8HF: export CFLAGS += $(LINUX_CFLAGS) -march=armv8-a
-arm32v8HF: export LDFLAGS += -march=armv8-a
+arm32v8HF: export CC := gcc
+arm32v8HF: export CFLAGS += $(LINUX_CFLAGS) -march=native -mtune=cortex-a53
+arm32v8HF: export LDFLAGS += -march=native
 arm32v8HF: export platform := linux/ARM_32
 arm32v8HF: export variant := v8_HF
 arm32v8HF:
