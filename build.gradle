@@ -1,11 +1,11 @@
 plugins {
-	id "biz.aQute.bnd.builder" version "5.0.1"
+	id "biz.aQute.bnd.builder" version "6.4.0"
 	id "com.diffplug.spotless" version "5.9.0"
 }
 
 apply plugin: 'java'
 apply plugin: 'eclipse'
-apply plugin: 'maven'
+apply plugin: 'maven-publish'
 apply plugin: 'signing'
 
 [compileJava, compileTestJava]*.options*.encoding = 'UTF-8'
@@ -15,7 +15,6 @@ Properties props = new Properties()
 props.load(new FileInputStream(buildDir.getAbsolutePath() + "/src/main/resources/com/neuronrobotics/nrjavaserial/build.properties"))
 
 group = "com.neuronrobotics"
-archivesBaseName = "nrjavaserial"
 version = props."app.version"
 
 sourceSets {
@@ -32,20 +31,20 @@ sourceSets {
 	}
 }
 
-jar.archiveName = "nrjavaserial-${props.'app.version'}.jar"
-
 repositories {
 	mavenCentral()
 	jcenter()
 }
 
 dependencies {
-	compile fileTree(dir: 'libs', includes: ['*.jar'])
-	testCompile 'junit:junit:4.12'
-	compile 'commons-net:commons-net:3.9.0'
+	implementation fileTree(dir: 'build/libs', includes: ['*.jar'])
+	testImplementation 'junit:junit:4.12'
+	implementation 'commons-net:commons-net:3.9.0'
 	compileOnly 'net.java.dev.jna:jna:4.4.0'
 	compileOnly 'net.java.dev.jna:jna-platform:4.4.0'
 }
+
+compileTestJava.dependsOn jar
 
 jar {
 	jar.duplicatesStrategy = DuplicatesStrategy.EXCLUDE
@@ -64,12 +63,13 @@ jar {
 }
 
 task javadocJar(type: Jar) {
-	classifier = 'javadoc'
+	archiveClassifier = 'javadoc'
 	from javadoc
 }
 
 task sourcesJar(type: Jar) {
-	classifier = 'sources'
+	archivesBaseName = "nrjavaserial"
+	archiveClassifier = 'sources'
 	from (sourceSets.main.allSource) {
 		exclude 'native/'
 	}
