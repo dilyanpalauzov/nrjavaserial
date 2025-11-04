@@ -48,6 +48,7 @@ compileTestJava.dependsOn jar
 
 jar {
 	jar.duplicatesStrategy = DuplicatesStrategy.EXCLUDE
+	jar.entryCompression = ZipEntryCompression.STORED
 
 	bnd("Created-By": "Commonwealth Robotics Cooperative",
 		"Specification-Title": props."app.name",

@@ -8,6 +8,11 @@ to build the Java portion of the project. To build natives, specify a platform:
 
 endef
 
+fast:
+	rm -f $$(find -name '*.o')
+	make -C src/main/c/ arm32v8HF
+	cd src/main/c/resources/ && zip -0u ../../../../build/libs/nrjavaserial-5.2.1.jar native/linux/ARM_32/libNRJavaSerialv8_HF.so
+
 only-gradle:
 	$(info $(ONLY_GRADLE))
 	$(call gradlew-build)
