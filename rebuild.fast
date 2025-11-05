@@ -1,0 +1,1 @@
+date ; make fast; nice -n19 ./gradlew build --build-cache --no-daemon --no-parallel ; date

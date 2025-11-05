@@ -1,0 +1,1 @@
+cd /git/nrjavaserial/src/main/c/resources && zip /usr/share/openhab/runtime/system/com/neuronrobotics/nrjavaserial/5.2.1.OH1/nrjavaserial-5.2.1.OH1.jar native/linux/ARM_32/libNRJavaSerialv8_HF.so

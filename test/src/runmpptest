@@ -1,0 +1,2 @@
+javac test/mpp/CRCUtil.java   test/mpp/SerialHandler.java
+java -classpath /git/nrjavaserial/build/libs/nrjavaserial-5.2.1.jar:. test/mpp/MPP.java
