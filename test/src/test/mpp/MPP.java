@@ -43,6 +43,11 @@ public class MPP implements AutoCloseable {
 			System.out.println("Another CPU Firmware: " + d.command("QVFW2"));
 			System.out.println("Device Protocol ID:   " + d.command("QPI"));
 			System.out.println("Device Serial Number: " + d.command("QID"));
+			System.out.println("QPIRI : " + d.command("QPIRI"));
+			System.out.println("QPIWIS: " + d.command("QPIWS"));
+			System.out.println("QMOD  : " + d.command("QMOD"));
+			System.out.println("QPIGS : " + d.command("QPIGS"));
+			System.out.println("QFLAG : " + d.command("QFLAG"));
 		} catch (NoSuchPortException e) {
 			System.err.println("No such port " + port + " " + e);
 		} catch (PortInUseException e) {
