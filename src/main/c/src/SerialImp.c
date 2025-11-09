@@ -3716,6 +3716,7 @@ JNIEXPORT jint JNICALL RXTXPort(nativeavailable)( JNIEnv *env,
 */
 	return (jint)result;
 fail:
+	if (errno == EINVAL || errno == ENOTTY) return (jint)0;
 	report("RXTXPort:nativeavailable:  ioctl() failed\n");
 /*
 	LEAVE( "RXTXPort:nativeavailable" );
